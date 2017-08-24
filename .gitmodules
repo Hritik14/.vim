@@ -31,3 +31,6 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate
+[submodule "pack/my_plugins/start/vim-l9"]
+	path = pack/my_plugins/start/vim-l9
+	url = https://github.com/eparreno/vim-l9
