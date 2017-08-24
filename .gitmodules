@@ -34,3 +34,36 @@
 [submodule "pack/my_plugins/start/vim-l9"]
 	path = pack/my_plugins/start/vim-l9
 	url = https://github.com/eparreno/vim-l9
+[submodule "pack/my_plugins/start/vim-fugitive"]
+	path = pack/my_plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "pack/my_plugins/start/vim-airline"]
+	path = pack/my_plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "pack/my_plugins/start/vim-airline-themes"]
+	path = pack/my_plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "pack/my_plugins/start/vim-bufferline"]
+	path = pack/my_plugins/start/vim-bufferline
+	url = https://github.com/bling/vim-bufferline
+[submodule "pack/my_plugins/start/YouCompleteMe"]
+	path = pack/my_plugins/start/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe
+[submodule "pack/my_plugins/start/MatchTagAlways"]
+	path = pack/my_plugins/start/MatchTagAlways
+	url = https://github.com/Valloric/MatchTagAlways
+[submodule "pack/my_plugins/start/vim-javascript"]
+	path = pack/my_plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "pack/my_plugins/start/nerdtree"]
+	path = pack/my_plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "pack/my_plugins/start/vim-surround"]
+	path = pack/my_plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "pack/my_plugins/start/tern_for_vim"]
+	path = pack/my_plugins/start/tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim
+[submodule "pack/my_plugins/start/delimitMate"]
+	path = pack/my_plugins/start/delimitMate
+	url = https://github.com/Raimondi/delimitMate
