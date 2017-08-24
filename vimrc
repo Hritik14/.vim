@@ -113,7 +113,6 @@ set smartcase
 filetype indent on
 " Airline custom settings
 let g:airline#extensions#tabline#enabled = 1
-call airline#parts#define_accent('mode', 'none')
 set encoding=utf-8   
 set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
 let g:airline_powerline_fonts = 1
