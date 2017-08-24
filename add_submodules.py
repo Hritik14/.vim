@@ -8,4 +8,4 @@ while True:
     else:
         break
 for item in list:
-    print(subprocess.run(['git','submodule','add','https://github.com/'+item,'bundle/'+item],stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.decode("utf-8"))
+    print(subprocess.run(['git','submodule','add','https://github.com/'+item,'pack/my_plugins/start/'+item.split("/")[1]],stdout=subprocess.PIPE,stderr=subprocess.STDOUT).stdout.decode("utf-8"))
