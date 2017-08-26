@@ -1,6 +1,6 @@
 # .vim
 
-`cd && git clone --recursive https://github.com/Hritik14/.vim` 
+`cd && git clone --recursive https://github.com/Hritik14/.vim`     
 Install plugin YouCompleteMe afterwards
 
 # Requirements:
