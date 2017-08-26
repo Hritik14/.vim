@@ -4,3 +4,6 @@
 
 # Requirements:
 Vim >= 8
+
+# Screenshots
+![NerdTree](http://i.imgur.com/j8jlqEf.png)
