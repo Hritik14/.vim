@@ -5,9 +5,6 @@ set nocompatible              " be iMproved, required
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors    
-" Use local vimrc
-" set exrc
-
 
 "Let's just use default YCM extra conf
 " let g:ycm_confirm_extra_conf = 0
@@ -130,3 +127,7 @@ nmap <Left> :bprev<CR>
 autocmd FileType qf nnoremap <silent> <buffer> q  :quit\|:wincmd b<CR> 
 " Commentings TODO: how it works
 autocmd FileType javascript,cpp,cc,c,java  nnoremap <buffer> ; I//<esc>
+" Set tab width
+set tabstop=4
+" Set indentation width
+set shiftwidth=4
