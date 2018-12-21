@@ -77,18 +77,9 @@ let g:ycm_always_populate_location_list = 1
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 let g:ycm_autoclose_preview_window_after_completion = 1
-if &term=~'screen-256color'
-	set term=screen-256color
-	let g:solarized_termcolors=256
-	set background=dark
-	colorscheme solarized
-	let g:Powerline_symbols = 'fancy'
-else
-	colorscheme atom-dark-256
-	color atom-dark-256
-	let g:Powerline_symbols = 'fancy'
-
-endif
+colorscheme atom-dark-256
+color atom-dark-256
+let g:Powerline_symbols = 'fancy'
 "Search selected text with // NOTE: Use * to search text under cursor [inbuilt]
 vnoremap // y/<C-R>"<CR>
 map <C-n> :NERDTreeToggle<CR>
@@ -150,10 +141,13 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_open_list = 1
 let g:ale_enabled = 0 
-nmap <C-L> :ALEToggle<CR>
+nmap L :ALEToggle<CR>
+nmap <silent> <A-k> <Plug>(ale_previous_wrap)
+nmap <silent> <A-j> <Plug>(ale_next_wrap)
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
 " True terminal colors
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-set termguicolors
+" This conflicts with tmux
+"set termguicolors
 au VimLeave * set guicursor=a:ver100-blinkon1
