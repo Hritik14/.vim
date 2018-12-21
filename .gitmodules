@@ -70,9 +70,9 @@
 [submodule "pack/my_plugins/start/powerline"]
 	path = pack/my_plugins/start/powerline
 	url = https://github.com/powerline/powerline
-[submodule "pack/my_plugins/ale"]
-	path = pack/my_plugins/ale
-	url = https://github.com/w0rp/ale
 [submodule "pack/my_plugins/start/diffchar.vim"]
 	path = pack/my_plugins/start/diffchar.vim
 	url = https://github.com/rickhowe/diffchar.vim
+[submodule "pack/my_plugins/start/ale"]
+	path = pack/my_plugins/start/ale
+	url = https://github.com/w0rp/ale
