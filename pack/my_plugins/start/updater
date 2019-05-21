@@ -6,5 +6,5 @@ echo "Updating $f"
 git checkout master
 git pull
 cd .. 
-git commit -am "Updated $f"
+git commit -am "Updated ${f:2}"
 done
