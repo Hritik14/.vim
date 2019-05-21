@@ -2,9 +2,10 @@
 
 find . -maxdepth 1 -type d -not -name ".*" | while read f; do
 cd "$f"
-echo "Updating $f"
+echo "Updating ${f:2}"
 git checkout master
 git pull
 cd .. 
-git commit -am "Updated ${f:2}"
+git add "$f"
+git commit -m "Updated ${f:2}"
 done
