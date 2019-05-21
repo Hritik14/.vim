@@ -144,6 +144,17 @@ let g:ale_enabled = 0
 nmap L :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
+:nmap <F1> <nop>
+
+" MatchTagAlways config
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+	\ 'php' : 1,
+    \}
+
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
 " True terminal colors
@@ -151,3 +162,6 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 " This conflicts with tmux
 "set termguicolors
 au VimLeave * set guicursor=a:ver100-blinkon1
+
+let dart_html_in_string=v:true
+let dart_format_on_save = 1
