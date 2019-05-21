@@ -1,10 +1,10 @@
 #/bin/bash
-# make sure the folder names do DOT contain spaces
-for f in `ls`; do
-cd $f
+
+find . -maxdepth 1 -type d -not -name ".*" | while read f; do
+cd "$f"
+echo "Updating $f"
 git checkout master
 git pull
 cd .. 
 git commit -am "Updated $f"
 done
-
