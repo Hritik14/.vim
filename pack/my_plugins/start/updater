@@ -1,0 +1,10 @@
+#/bin/bash
+# make sure the folder names do DOT contain spaces
+for f in `ls`; do
+cd $f
+git checkout master
+git pull
+cd .. 
+git commit -am "Updated $f"
+done
+

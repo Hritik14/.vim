@@ -1,0 +1,5 @@
+#!/bin/bash
+pwd=`pwd`
+cd pack/my_plugins/start/
+./updater
+cd $pwd
