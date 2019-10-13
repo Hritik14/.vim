@@ -1,7 +1,5 @@
 " Disable YCM
 " let g:loaded_youcompleteme = 1
-" Enable YCM for only specific files
-let g:ycm_filetype_whitelist = {'html': 1, 'c': 1,'cc': 1,'md': 1,'bash': 1,'python': 1}
 
 set nocompatible              " be iMproved, required
 set nocompatible              " be iMproved, required
@@ -157,15 +155,6 @@ let g:mta_filetypes = {
 	\ 'php' : 1,
     \}
 
-" UltiSnips config
-let g:UltiSnipsEditSplit="vertical"
-" xcape handles this
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" Learn vim the hard way exercises
-echom ">^.^<"
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
 " True terminal colors
