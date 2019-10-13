@@ -1,3 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/hritik/Projects/Arrow'
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application'
+let g:netrw_dirhist_5='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application/core'
+let g:netrw_dirhist_4='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application'
+let g:netrw_dirhist_3='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application/config'
+let g:netrw_dirhist_2='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application'
+let g:netrw_dirhist_1='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application/config'
+let g:netrw_dirhist_0='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application'
+let g:netrw_dirhist_9='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application/helpers'
+let g:netrw_dirhist_8='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application'
+let g:netrw_dirhist_7='/home/hritik/Projects/CodingLiquids/session/web/EHW/servers/xss_server/application/language'
