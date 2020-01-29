@@ -1,5 +1,5 @@
 " Disable YCM
-" let g:loaded_youcompleteme = 1
+let g:loaded_youcompleteme = 1
 
 set nocompatible              " be iMproved, required
 set nocompatible              " be iMproved, required
@@ -154,6 +154,13 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
 	\ 'php' : 1,
     \}
+
+" Quickfix window size
+" Stolen from https://vim.fandom.com/wiki/Automatically_fitting_a_quickfix_window_height
+au FileType qf call AdjustWindowHeight(1, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
 
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
