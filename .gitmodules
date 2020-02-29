@@ -82,3 +82,12 @@
 [submodule "pack/my_plugins/start/UltiSnips"]
 	path = pack/my_plugins/start/UltiSnips
 	url = https://github.com/sirver/UltiSnips
+[submodule "pack/my_plugins/start/vim-go"]
+	path = pack/my_plugins/start/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "pack/my_plugins/start/vim-snippets"]
+	path = pack/my_plugins/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "pack/my_plugins/start/vim-signature"]
+	path = pack/my_plugins/start/vim-signature
+	url = https://github.com/kshenoy/vim-signature
