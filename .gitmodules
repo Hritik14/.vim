@@ -91,3 +91,6 @@
 [submodule "pack/my_plugins/start/vim-signature"]
 	path = pack/my_plugins/start/vim-signature
 	url = https://github.com/kshenoy/vim-signature
+[submodule "pack/my_plugins/start/tagbar"]
+	path = pack/my_plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar

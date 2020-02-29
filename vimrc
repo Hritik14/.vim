@@ -1,5 +1,10 @@
 " Disable YCM
-let g:loaded_youcompleteme = 1
+" let g:loaded_youcompleteme = 1
+
+if exists('py2') && has('python')
+elseif has('python3')
+endif
+
 
 set nocompatible              " be iMproved, required
 set nocompatible              " be iMproved, required
@@ -59,6 +64,7 @@ nmap <F5> :source ~/.vim/vimrc<CR>
 nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
 nmap <F3> :q<CR>
+nmap <F8> :TagbarToggle<CR>
 " All text typed in insert mode will be sent to your shell. Use the <F9> key
 " to send a visual selection from any buffer to the shell. 
 nmap t :ConqueTermSplit bash<CR>
@@ -161,6 +167,23 @@ au FileType qf call AdjustWindowHeight(1, 10)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
+
+" ultisnips 
+" make YCM compatible with UltiSnips (using supertab, installed via pacman)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+
 
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
