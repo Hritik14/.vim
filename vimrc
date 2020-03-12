@@ -19,6 +19,8 @@ set cindent
 set number 
 set hlsearch
 set incsearch
+set autochdir
+filetype plugin indent on
 " color elflord
 " Show me good dropdown colors YCM
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#000000 guibg=#FFFFFF
@@ -65,6 +67,10 @@ nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
 nmap <F3> :q<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <C-F> :BLines<CR>
+nmap <C-U> :Lines<CR>
+cabbrev E Files
+"
 " All text typed in insert mode will be sent to your shell. Use the <F9> key
 " to send a visual selection from any buffer to the shell. 
 nmap t :ConqueTermSplit bash<CR>
@@ -174,10 +180,17 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<CR>"
+let g:UltiSnipsExpandTrigger = "UltiSnipsExpandTrigger"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Use C-R for snip expand
+let g:ulti_expand_or_jump_res = 0 "default value, just set once
+function! Ulti_ExpandOrJump_and_getRes()
+    call UltiSnips#ExpandSnippetOrJump()
+    return g:ulti_expand_or_jump_res
+endfunction
+inoremap <silent> <CR> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":""<CR>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
