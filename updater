@@ -1,9 +1,3 @@
 #!/bin/bash
 
-# Remove these if updater keeps working fine
-# pwd=`pwd`
-# cd pack/my_plugins/start/
-# ./updater
-# cd $pwd
-
 git submodule foreach git pull
