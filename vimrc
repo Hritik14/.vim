@@ -63,6 +63,11 @@ nmap <F8> :TagbarToggle<CR>
 nmap <C-F> :BLines<CR>
 nmap <C-U> :Lines<CR>
 cabbrev E Files
+nnoremap <C-d> :YcmCompleter GoToDeclaration<CR>
+nmap <C-Up> :lbefore<CR>
+nmap <C-Down> :lafter<CR>
+nmap <leader>1 :lrewind<CR>
+let g:lt_location_list_toggle_map = '<F9>'
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -135,12 +140,22 @@ set guifont=Source\ Code\ Pro\ 13
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_open_list = 1
-let g:ale_enabled = 0 
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_open_list = 0
+let g:ale_enabled = 1
 nmap L :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
-:nmap <F1> <nop>
+" Close loclist on buffer close
+augroup CloseLoclistWindowGroup
+	autocmd!
+	autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
+
+
+nmap <F1> <nop>
 
 " MatchTagAlways config
 let g:mta_filetypes = {
@@ -197,6 +212,7 @@ set cc=80
 " Neat left margin
 set foldcolumn=0
 set nuw=3
+
 
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
