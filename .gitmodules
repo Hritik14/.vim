@@ -109,3 +109,9 @@
 [submodule "pack/my_plugins/start/ListToggle"]
 	path = pack/my_plugins/start/ListToggle
 	url = https://github.com/Valloric/ListToggle
+[submodule "colors/Apprentice"]
+	path = colors/Apprentice
+	url = https://github.com/romainl/Apprentice
+[submodule "colors/git/sorcerer"]
+	path = colors/git/sorcerer
+	url = https://github.com/vim-scripts/Sorcerer
