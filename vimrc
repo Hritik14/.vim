@@ -13,9 +13,13 @@ set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 "------------- YCM misc options------------------
 "Let's just use default YCM extra conf
 " let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_interpreter_path = 'python'
+let g:ycm_python_sys_path = ['/usr/lib/python3.8/site-packages']
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
-
 
 set autoindent
 set cindent
@@ -45,8 +49,6 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 0 
 let g:ycm_enable_diagnostic_highlighting = 0
 
-"Highlight current line
-set cursorline
 
 " I REALLY don't need the Ex-Mode
 nnoremap Q <nop>
@@ -64,10 +66,14 @@ nmap <C-F> :BLines<CR>
 nmap <C-U> :Lines<CR>
 cabbrev E Files
 nnoremap <C-d> :YcmCompleter GoToDeclaration<CR>
-nmap <C-Up> :lbefore<CR>
-nmap <C-Down> :lafter<CR>
+cabbrev YC YcmCompleter
+" Faster error (loclist) navigation
+nmap <C-b> :lbefore<CR>
+nmap <C-n> :lafter<CR>
 nmap <leader>1 :lrewind<CR>
 let g:lt_location_list_toggle_map = '<F9>'
+nmap <F1> <Plug>(YCMHover)
+imap <F1> <ESC><Plug>(YCMHover)
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -86,13 +92,13 @@ nmap <Left> :bprev<CR>
  let delimitMate_expand_space = 1
 
 "Ycm, time for error handling
-let g:ycm_always_populate_location_list = 1
+let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-let g:ycm_autoclose_preview_window_after_completion = 1
+set completeopt+=popup
 
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR> " T for tree
 " Opening nerd tree when opening a folder
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -107,9 +113,11 @@ set smartcase
 filetype indent on
 " Airline custom settings
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
 set encoding=utf-8   
 let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
 
 " Command area autocompletion. Tab: once - complete as much pos. twice: list,
 " three: cycle through list
@@ -142,8 +150,9 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_insert_leave = 1
 let g:ale_open_list = 0
+let g:ale_sign_highlight_linenrs = 1
 let g:ale_enabled = 1
 nmap L :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
@@ -155,7 +164,6 @@ augroup CloseLoclistWindowGroup
 augroup END
 
 
-nmap <F1> <nop>
 
 " MatchTagAlways config
 let g:mta_filetypes = {
@@ -199,8 +207,6 @@ autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardIm
 
 
 " Visuals
-colorscheme atom-dark-256
-color atom-dark-256
 let g:Powerline_symbols = 'fancy'
 " Cursor shapes
 au VimEnter * silent execute "!print -n -- '\033[2 q'"
@@ -212,7 +218,11 @@ set cc=80
 " Neat left margin
 set foldcolumn=0
 set nuw=3
-
+" Highlight current line number ONLY
+set cursorline
+set cursorlineopt=number
+autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
+colorscheme sorcerer
 
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
