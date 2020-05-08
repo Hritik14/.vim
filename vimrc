@@ -55,8 +55,10 @@ nnoremap Q <nop>
 
 " Hotkeys
 " Compile my C++, and run as well ;)
-nmap <F8> :w<CR>:!g++ -std=c++98 "%"<CR>:!./a.out<CR>
-nmap <F7> :!./a.out<CR>
+nnoremap <F-10> :!g++ -o  %:r.out % -std=c++14<Enter>
+nnoremap <F-12> :!./%:r.out
+" Run the python command 
+nnoremap <F4> :!python3 %
 nmap <F5> :source ~/.vim/vimrc<CR>
 nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
