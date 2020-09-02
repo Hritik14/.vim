@@ -8,5 +8,7 @@ let g:ycm_log_level = 'debug'
 
 " Load YCM (only)
 let &rtp .= ',' . expand( '<sfile>:p:h' )
+let g:EclimCompletionMethod = 'omnifunc'
 filetype plugin indent on
 
+set completeopt+=popup

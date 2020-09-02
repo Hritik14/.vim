@@ -61,9 +61,6 @@
 [submodule "pack/my_plugins/start/vim-surround"]
 	path = pack/my_plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "pack/my_plugins/start/tern_for_vim"]
-	path = pack/my_plugins/start/tern_for_vim
-	url = https://github.com/ternjs/tern_for_vim
 [submodule "pack/my_plugins/start/powerline"]
 	path = pack/my_plugins/start/powerline
 	url = https://github.com/powerline/powerline
@@ -115,3 +112,6 @@
 [submodule "colors/git/sorcerer"]
 	path = colors/git/sorcerer
 	url = https://github.com/vim-scripts/Sorcerer
+[submodule "pack/my_plugins/start/nginx.vim"]
+	path = pack/my_plugins/start/nginx.vim
+	url = https://github.com/chr4/nginx.vim

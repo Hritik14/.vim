@@ -58,7 +58,7 @@ nnoremap Q <nop>
 nmap <F8> :w<CR>:!g++ -std=c++98 "%"<CR>:!./a.out<CR>
 nmap <F7> :!./a.out<CR>
 nmap <F5> :source ~/.vim/vimrc<CR>
-nmap f :YcmCompleter FixIt<CR>
+" nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
 nmap <F3> :q<CR>
 nmap <F8> :TagbarToggle<CR>
@@ -87,9 +87,6 @@ vnoremap // y/<C-R>"<CR>
 nmap <Right> :bnext<CR>
 nmap <Left> :bprev<CR>
 
-" Mr. Delimate work fine now!
- let delimitMate_expand_cr = 1
- let delimitMate_expand_space = 1
 
 "Ycm, time for error handling
 let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
@@ -154,6 +151,10 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_enabled = 1
+let g:ale_python_flake8_options = '--ignore=E501,E302,W191,F403,F405'
+let b:ale_linters = ['flake8', 'pylint']
+let b:ale_fixers = ['autopep8', 'yapf']
+
 nmap L :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
@@ -205,6 +206,8 @@ let g:UltiSnipsEditSplit="vertical"
 " Paste images in markdown files (md-img-paste.vim)
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
+" vim-go
+let g:go_list_type = "locationlist"
 
 " Visuals
 let g:Powerline_symbols = 'fancy'
