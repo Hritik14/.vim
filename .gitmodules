@@ -88,9 +88,6 @@
 [submodule "pack/my_plugins/start/md-img-paste.vim"]
 	path = pack/my_plugins/start/md-img-paste.vim
 	url = https://github.com/ferrine/md-img-paste.vim
-[submodule "pack/my_plugins/start/vim-markdown"]
-	path = pack/my_plugins/start/vim-markdown
-	url = https://github.com/gabrielelana/vim-markdown
 [submodule "pack/my_plugins/start/fzf.vim"]
 	path = pack/my_plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -115,3 +112,12 @@
 [submodule "pack/my_plugins/start/nginx.vim"]
 	path = pack/my_plugins/start/nginx.vim
 	url = https://github.com/chr4/nginx.vim
+[submodule "pack/my_plugins/start/vim-nand2tetris-syntax"]
+	path = pack/my_plugins/start/vim-nand2tetris-syntax
+	url = https://github.com/sevko/vim-nand2tetris-syntax
+[submodule "pack/my_plugins/start/vim-table-mode"]
+	path = pack/my_plugins/start/vim-table-mode
+	url = https://github.com/dhruvasagar/vim-table-mode
+[submodule "pack/my_plugins/start/vim-markdown"]
+	path = pack/my_plugins/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown

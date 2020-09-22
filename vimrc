@@ -20,6 +20,21 @@ let g:ycm_extra_conf_vim_data = [
   \  'g:ycm_python_sys_path'
   \]
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar': 1,
+      \ 'notes': 1,
+      \ 'markdown': 1,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1,
+      \ 'go': 1,
+      \ '': 1
+      \} "use vim-go for golang
 
 set autoindent
 set cindent
@@ -154,6 +169,9 @@ let g:ale_enabled = 1
 let g:ale_python_flake8_options = '--ignore=E501,E302,W191,F403,F405'
 let b:ale_linters = ['flake8', 'pylint']
 let b:ale_fixers = ['autopep8', 'yapf']
+let g:ale_pattern_options = {
+			\   '.*(\.md)|(\.txt)$': {'ale_enabled': 0},
+			\}
 
 nmap L :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
@@ -186,7 +204,8 @@ endfunction
 " make YCM compatible with UltiSnips (using supertab, installed via pacman)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = "context"         " Trying to make vim-go work
 
 let g:UltiSnipsExpandTrigger = "UltiSnipsExpandTrigger"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -206,8 +225,18 @@ let g:UltiSnipsEditSplit="vertical"
 " Paste images in markdown files (md-img-paste.vim)
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
+
 " vim-go
 let g:go_list_type = "locationlist"
+let g:go_doc_popup_window = 1
+autocmd FileType go nmap <F1> :GoDoc<CR>
+autocmd FileType go imap <F1> <ESC>:GoDoc<CR>
+
+" vim-markdown
+set conceallevel=2
+let g:vim_markdown_math = 1
+let g:vim_markdown_strikethrough = 1
+
 
 " Visuals
 let g:Powerline_symbols = 'fancy'
