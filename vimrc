@@ -207,9 +207,9 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:SuperTabDefaultCompletionType = "context"         " Trying to make vim-go work
 
-let g:UltiSnipsExpandTrigger = "UltiSnipsExpandTrigger"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " Use C-R for snip expand
 let g:ulti_expand_or_jump_res = 0 "default value, just set once
