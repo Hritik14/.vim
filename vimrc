@@ -132,9 +132,6 @@ let g:airline_theme='bubblegum'
 set wildmode=longest,list,full
 set wildmenu
 
-" Let YCM handle completions only. (In case of eclim installed)
-let g:EclimCompletionMethod = 'omnifunc'
-
 set splitbelow
 " Close eclim error window with 'q' TODO: write how it works
 autocmd FileType qf nnoremap <silent> <buffer> q  :quit\|:wincmd b<CR> 
@@ -153,6 +150,7 @@ set foldcolumn=2
 set foldnestmax=2
 set guifont=Source\ Code\ Pro\ 13
 " AlE Settings
+let g:ale_enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -162,9 +160,13 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
-let g:ale_enabled = 1
+let g:ale_completion_enabled = 1
 let b:ale_linters = ['flake8', 'pylint']
-let b:ale_fixers = {"python": ['autopep8', 'yapf']}
+let b:ale_fixers = {
+			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+			\ 	'python': ['autopep8', 'yapf'],
+			\   'javascript': ['eslint'],
+			\ }
 let g:ale_pattern_options = {
 			\   '.*(\.md)|(\.txt)$': {'ale_enabled': 0},
 			\}
