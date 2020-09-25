@@ -163,12 +163,13 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
+let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_enabled = 1
 let g:ale_python_flake8_options = '--ignore=E501,E302,W191,F403,F405'
 let b:ale_linters = ['flake8', 'pylint']
-let b:ale_fixers = ['autopep8', 'yapf']
+let b:ale_fixers = {"python": ['autopep8', 'yapf']}
 let g:ale_pattern_options = {
 			\   '.*(\.md)|(\.txt)$': {'ale_enabled': 0},
 			\}
