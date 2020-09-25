@@ -210,13 +210,17 @@ let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
-" Use C-R for snip expand
-let g:ulti_expand_or_jump_res = 0 "default value, just set once
-function! Ulti_ExpandOrJump_and_getRes()
-    call UltiSnips#ExpandSnippetOrJump()
-    return g:ulti_expand_or_jump_res
-endfunction
-inoremap <silent> <CR> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":""<CR>
+" Following blocks cause some lag issues while typing
+" If it's solved by next time, remove following lines
+" I copied it from somewhere, find the author and talk to them
+"
+" " Use C-R for snip expand
+" let g:ulti_expand_or_jump_res = 0 "default value, just set once
+" function! Ulti_ExpandOrJump_and_getRes()
+"     call UltiSnips#ExpandSnippetOrJump()
+"     return g:ulti_expand_or_jump_res
+" endfunction
+" inoremap <silent> <CR> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":""<CR>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
