@@ -42,10 +42,6 @@ set number
 set hlsearch
 set incsearch
 filetype plugin indent on
-" color elflord
-" Show me good dropdown colors YCM
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#000000 guibg=#FFFFFF
-highlight PmenuSel guifg=blue
 
 " Increment/decrement features on vim should live!
 :nnoremap <A-a> <C-a>
@@ -256,7 +252,9 @@ set cursorline
 set cursorlineopt=number
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
 colorscheme sorcerer
-
+hi Normal guibg=NONE
+hi Visual guibg=#2F2F2F guifg=NONE ctermbg=lightyellow
+set termguicolors
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
 " True terminal colors
