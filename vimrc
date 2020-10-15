@@ -8,7 +8,7 @@ endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors    
+set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 
 "------------- YCM misc options------------------
 "Let's just use default YCM extra conf
@@ -38,9 +38,10 @@ let g:ycm_filetype_blacklist = {
 
 set autoindent
 set cindent
-set number 
+set number
 set hlsearch
 set incsearch
+set mouse=nhi
 filetype plugin indent on
 
 " Increment/decrement features on vim should live!
@@ -57,7 +58,7 @@ autocmd BufNewFile,BufReadPost *.CPP,*.cpp set filetype=cpp
 
 "When I don't want YCM to compile for me (See Diagnostics)
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 0 
+let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 
 
@@ -85,6 +86,8 @@ nmap <leader>1 :lrewind<CR>
 let g:lt_location_list_toggle_map = '<F9>'
 nmap <F1> <Plug>(YCMHover)
 imap <F1> <ESC><Plug>(YCMHover)
+" Alt-Click for definiton, this is overriden by for go files to use vim-go
+map <A-LeftMouse> :YcmCompleter GoToDefinition<CR>
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -123,7 +126,7 @@ filetype indent on
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ale#enabled = 1
-set encoding=utf-8   
+set encoding=utf-8
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 
@@ -134,7 +137,7 @@ set wildmenu
 
 set splitbelow
 " Close eclim error window with 'q' TODO: write how it works
-autocmd FileType qf nnoremap <silent> <buffer> q  :quit\|:wincmd b<CR> 
+autocmd FileType qf nnoremap <silent> <buffer> q  :quit\|:wincmd b<CR>
 " Commentings TODO: how it works
 autocmd FileType javascript,cpp,cc,c,java  nnoremap <buffer> ; I//<esc>
 " Set tab width
@@ -161,11 +164,13 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_completion_enabled = 1
-let b:ale_linters = ['flake8', 'pylint']
-let b:ale_fixers = {
+let g:ale_linters = {
+			\ 	'python': ['flake8', 'pylint']
+			\ 	}
+let g:ale_fixers = {
 			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 			\ 	'python': ['autopep8', 'yapf'],
-			\   'javascript': ['eslint'],
+			\   'javascript': ['prettier'],
 			\ }
 let g:ale_pattern_options = {
 			\   '.*(\.md)|(\.txt)$': {'ale_enabled': 0},
@@ -199,7 +204,7 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-" ultisnips 
+" ultisnips
 " make YCM compatible with UltiSnips (using supertab, installed via pacman)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -234,6 +239,8 @@ let g:go_list_type = "locationlist"
 let g:go_doc_popup_window = 1
 autocmd FileType go nmap <F1> :GoDoc<CR>
 autocmd FileType go imap <F1> <ESC>:GoDoc<CR>
+autocmd FileType go map <A-LeftMouse> :GoDef<CR>
+autocmd FileType go map <A-LeftMouse> :GoReferrers<CR>
 
 " vim-markdown
 set conceallevel=2
