@@ -1,5 +1,14 @@
 " Disable YCM
 " let g:loaded_youcompleteme = 1
+"
+" README
+" YCM and ALE fight amongst themselves often, here are the rules
+" YCM handles everything about:
+" 	c, cpp, javascript
+"
+" ALE handles everything about:
+" NOTHING - ALE is linter, let it be linter
+"
 
 if exists('py2') && has('python')
 elseif has('python3')
@@ -36,12 +45,21 @@ let g:ycm_filetype_blacklist = {
       \ '': 1
       \} "use vim-go for golang
 
+"Ycm, time for error handling
+let g:ycm_auto_hover = 1
+let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+set completeopt=popup
+au FileType c,cpp,javascript :ALEDisableBuffer
+
 set autoindent
 set cindent
 set number
 set hlsearch
 set incsearch
 set mouse=nhi
+set nostartofline
 filetype plugin indent on
 
 " Increment/decrement features on vim should live!
@@ -56,10 +74,6 @@ syntax enable
 " C'on, CPP files are also cpp files
 autocmd BufNewFile,BufReadPost *.CPP,*.cpp set filetype=cpp
 
-"When I don't want YCM to compile for me (See Diagnostics)
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
 
 
 " I REALLY don't need the Ex-Mode
@@ -72,7 +86,7 @@ nmap <F7> :!./a.out<CR>
 nmap <F5> :source ~/.vim/vimrc<CR>
 " nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
-nmap <F3> :q<CR>
+nmap <F3> :ALEFix<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <C-F> :BLines<CR>
 nmap <C-U> :Lines<CR>
@@ -84,10 +98,13 @@ nmap <C-b> :lbefore<CR>
 nmap <C-n> :lafter<CR>
 nmap <leader>1 :lrewind<CR>
 let g:lt_location_list_toggle_map = '<F9>'
+let g:lt_quickfix_list_toggle_map = '<leader><leader><leader>q'
 nmap <F1> <Plug>(YCMHover)
 imap <F1> <ESC><Plug>(YCMHover)
-" Alt-Click for definiton, this is overriden by for go files to use vim-go
-map <A-LeftMouse> :YcmCompleter GoToDefinition<CR>
+" Ctrl-Click for definiton, this is overriden by for go files to use vim-go
+map <C-LeftMouse> <LeftMouse>:YcmCompleter GoToDefinition<CR>
+nmap <Space> :YcmCompleter GoToDefinition<CR>
+map <C-RightMouse> <LeftMouse>:YcmCompleter GoToReferences<CR>
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -100,21 +117,19 @@ vnoremap // y/<C-R>"<CR>
 " Buffer navigation
 nmap <Right> :bnext<CR>
 nmap <Left> :bprev<CR>
+" Because of NERDTree
+nmap <leader>q :bp<cr>:bd #<cr>
 
 
-"Ycm, time for error handling
-let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set completeopt+=popup
 
-
-map <C-t> :NERDTreeToggle<CR> " T for tree
+" NERDTRee settings
+map <C-t> :NERDTreeToggleVCS<CR> " T for tree
 " Opening nerd tree when opening a folder
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Close vim if only nerdtree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeWinPos = "right"
 
 " Open new buffers w/o saving a buffer
 set hidden
@@ -147,7 +162,7 @@ set shiftwidth=4
 " No dealy in InsertLeave
 set timeoutlen=1000 ttimeoutlen=0
 " Foldings
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 set foldcolumn=2
 set foldnestmax=2
@@ -160,20 +175,22 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0 "DIY
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
-			\ 	'python': ['flake8', 'pylint']
+			\ 	'python': ['pylint']
 			\ 	}
+" 'python': ['flake8', 'pylint']
 let g:ale_fixers = {
-			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-			\ 	'python': ['autopep8', 'yapf'],
-			\   'javascript': ['prettier'],
+			\	'python': ['black', 'reorder-python-imports', 'autoimport'],
+			\	'c': ['trim_whitespace'],
 			\ }
+" 'python': ['autopep8', 'yapf', 'remove_trailing_lines', 'trim_whitespace'],
+
 let g:ale_pattern_options = {
-			\   '.*(\.md)|(\.txt)$': {'ale_enabled': 0},
+			\   '.*(\.md)|(\.txt)|(\.rst)$': {'ale_enabled': 0},
 			\}
 autocmd FileType gitcommit :ALEDisableBuffer
 
@@ -197,6 +214,30 @@ let g:mta_filetypes = {
 	\ 'php' : 1,
     \}
 
+
+" On save {
+" BUGGY
+""augroup onsave
+""au BufWritePre * call OnSave()
+""
+""function OnSave()
+""	let filetype=&filetype
+""
+""	let prettier=["flow","babel","babel-flow","babel-ts","typescript","css","less","scss","json","json5","json-stringify","graphql","markdown","mdx","vue","yaml","html","angular","lwc"]
+""	if index(prettier, filetype) >= 0
+""		execute "%!prettier --use-tabs --insert-pragma --loglevel silent --parser " filetype
+""	endif
+""
+""	if filetype == "javascript"
+""		%!prettier --use-tabs --insert-pragma --loglevel silent --parser typescript
+""	endif
+""
+""	" Filetype specific parsers goes here
+""endfunction
+""
+""augroup END
+"""}
+
 " Quickfix window size
 " Stolen from https://vim.fandom.com/wiki/Automatically_fitting_a_quickfix_window_height
 au FileType qf call AdjustWindowHeight(1, 10)
@@ -211,8 +252,9 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:SuperTabDefaultCompletionType = "context"         " Trying to make vim-go work
 
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+imap <C-m> <nop>
+let g:UltiSnipsExpandTrigger = "<C-h>"
+let g:UltiSnipsJumpForwardTrigger = "<C-h>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " Following blocks cause some lag issues while typing
@@ -232,6 +274,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Paste images in markdown files (md-img-paste.vim)
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir_filename_prefix = 1
 
 
 " vim-go
@@ -239,8 +282,8 @@ let g:go_list_type = "locationlist"
 let g:go_doc_popup_window = 1
 autocmd FileType go nmap <F1> :GoDoc<CR>
 autocmd FileType go imap <F1> <ESC>:GoDoc<CR>
-autocmd FileType go map <A-LeftMouse> :GoDef<CR>
-autocmd FileType go map <A-LeftMouse> :GoReferrers<CR>
+autocmd FileType go map <C-LeftMouse> <LeftMouse>:GoDef<CR>
+autocmd FileType go map <C-LeftMouse> <LeftMouse>:GoReferrers<CR>
 
 " vim-markdown
 set conceallevel=2
@@ -255,8 +298,8 @@ au VimEnter * silent execute "!print -n -- '\033[2 q'"
 au InsertEnter * silent execute "!print -n -- '\033[5 q'"
 au InsertLeave * silent execute "!print -n -- '\033[2 q'"
 au VimLeave * silent execute "!print -n -- '\033[5 q'"
-" No one line essays
-set cc=80
+" ~No one line essays~, the line was annoying
+" set cc=80
 " Neat left margin
 set foldcolumn=0
 set nuw=3
@@ -278,3 +321,5 @@ au VimLeave * set guicursor=a:ver100-blinkon1
 
 let dart_html_in_string=v:true
 let dart_format_on_save = 1
+
+
