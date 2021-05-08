@@ -85,9 +85,6 @@
 [submodule "fzf"]
 	path = pack/my_plugins/start/fzf
 	url = https://github.com/junegunn/fzf.vim
-[submodule "pack/my_plugins/start/md-img-paste.vim"]
-	path = pack/my_plugins/start/md-img-paste.vim
-	url = https://github.com/ferrine/md-img-paste.vim
 [submodule "pack/my_plugins/start/fzf.vim"]
 	path = pack/my_plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -121,3 +118,9 @@
 [submodule "pack/my_plugins/start/vim-markdown"]
 	path = pack/my_plugins/start/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown
+[submodule "pack/my_plugins/start/xmledit"]
+	path = pack/my_plugins/start/xmledit
+	url = https://github.com/sukima/xmledit
+[submodule "pack/my_plugins/start/md-img-paste.vim"]
+	path = pack/my_plugins/start/md-img-paste.vim
+	url = git@github.com:ferrine/md-img-paste.vim.git
