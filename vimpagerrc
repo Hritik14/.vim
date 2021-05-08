@@ -1,0 +1,5 @@
+let g:loaded_youcompleteme = 1
+let g:airline_disable_statusline = 1
+au FileType * :ALEDisable
+set ignorecase
+set smartcase
