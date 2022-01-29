@@ -45,6 +45,9 @@ let g:ycm_filetype_blacklist = {
       \ '': 1
       \} "use vim-go for golang
 
+" Autocomplete on 3 letters in C, python
+let g:ycm_semantic_triggers = { 'c': [ 're!\w{3}' ], 'python': [ 're!\w{3}' ]}
+
 "Ycm, time for error handling
 let g:ycm_auto_hover = 1
 let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
@@ -60,7 +63,10 @@ set hlsearch
 set incsearch
 set mouse=nhi
 set nostartofline
+set synmaxcol=0
+set lazyredraw
 filetype plugin indent on
+set diffopt+=vertical
 
 " Increment/decrement features on vim should live!
 :nnoremap <A-a> <C-a>
@@ -83,9 +89,6 @@ autocmd Filetype gitcommit set spell
 nnoremap Q <nop>
 
 " Hotkeys
-" Compile my C++, and run as well ;)
-nmap <F8> :w<CR>:!g++ -std=c++98 "%"<CR>:!./a.out<CR>
-nmap <F7> :!./a.out<CR>
 nmap <F5> :source ~/.vim/vimrc<CR>
 " nmap f :YcmCompleter FixIt<CR>
 nmap <F2> :w<CR>
@@ -108,6 +111,7 @@ imap <F1> <ESC><Plug>(YCMHover)
 map <C-LeftMouse> <LeftMouse>:YcmCompleter GoToDefinition<CR>
 nmap <Space> :YcmCompleter GoToDefinition<CR>
 map <C-RightMouse> <LeftMouse>:YcmCompleter GoToReferences<CR>
+nnoremap gb :ls<CR>:b<Space>
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -140,13 +144,18 @@ set hidden
 set ignorecase
 set smartcase
 filetype indent on
-" Airline custom settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#ale#enabled = 1
-set encoding=utf-8
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
+" " Airline custom settings
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
+" let g:airline#extensions#ale#enabled = 1
+" set encoding=utf-8
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='bubblegum'
+" Dumped Airline, try lightline next time you see this
+" ========== Statusline ==============
+:set laststatus=2
+:set statusline=%m\ %t\ %y\ %{&fileencoding?&fileencoding:&encoding}\ %=%(C:%c\ L:%l\ %P%)
+
 
 " Command area autocompletion. Tab: once - complete as much pos. twice: list,
 " three: cycle through list
@@ -195,6 +204,7 @@ let g:ale_fixers = {
 let g:ale_pattern_options = {
 			\   '.*(\.md)|(\.txt)|(\.rst)$': {'ale_enabled': 0},
 			\}
+let g:ale_python_black_options = '-l 100'
 autocmd FileType gitcommit :ALEDisableBuffer
 
 nmap L :ALEToggle<CR>
@@ -256,7 +266,6 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = "context"         " Trying to make vim-go work
 let g:SuperTabContextDefaultCompletionType = "<c-n>" 	" Top-down autocomplete
 
-imap <C-m> <nop>
 let g:UltiSnipsExpandTrigger = "<C-h>"
 let g:UltiSnipsJumpForwardTrigger = "<C-h>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
@@ -297,11 +306,11 @@ let g:vim_markdown_strikethrough = 1
 
 " Visuals
 let g:Powerline_symbols = 'fancy'
-" Cursor shapes
-au VimEnter * silent execute "!print -n -- '\033[2 q'"
-au InsertEnter * silent execute "!print -n -- '\033[5 q'"
-au InsertLeave * silent execute "!print -n -- '\033[2 q'"
-au VimLeave * silent execute "!print -n -- '\033[5 q'"
+" Cursor shapes, let keep it normal for now
+" au VimEnter * silent execute "!print -n -- '\033[2 q'"
+" au InsertEnter * silent execute "!print -n -- '\033[5 q'"
+" au InsertLeave * silent execute "!print -n -- '\033[2 q'"
+" au VimLeave * silent execute "!print -n -- '\033[5 q'"
 " ~No one line essays~, the line was annoying
 " set cc=80
 " Neat left margin
@@ -326,5 +335,3 @@ au VimLeave * set guicursor=a:ver100-blinkon1
 
 let dart_html_in_string=v:true
 let dart_format_on_save = 1
-
-
