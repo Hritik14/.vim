@@ -112,3 +112,9 @@
 [submodule "pack/my_plugins/start/md-img-paste.vim"]
 	path = pack/my_plugins/start/md-img-paste.vim
 	url = git@github.com:ferrine/md-img-paste.vim.git
+[submodule "pack/my_plugins/start/supertab"]
+	path = pack/my_plugins/start/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "pack/my_plugins/start/fzf"]
+	path = pack/my_plugins/start/fzf
+	url = https://github.com/junegunn/fzf
