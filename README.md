@@ -1,7 +1,9 @@
 # .vim
 
-`cd && git clone --recursive https://github.com/Hritik14/.vim`     
-Install plugin YouCompleteMe afterwards
+```bash
+cd && git clone --recurse-submodules https://github.com/Hritik14/.vim
+```
+And install plugin YouCompleteMe afterwards
 
 Here's an example pacman hook for regular YCM updates:
 
@@ -22,5 +24,5 @@ Exec = /usr/bin/su - hritik -c "/usr/bin/python /home/hritik/.vim/pack/my_plugin
 # Requirements:
 Vim >= 8
 
-# Screenshots
-[![screencast](https://imgur.com/download/AA7vVVw)](https://youtu.be/1vh6KLKTg8I)
+# Screencast
+[![asciicast](https://asciinema.org/a/465384.svg)](https://asciinema.org/a/465384)
