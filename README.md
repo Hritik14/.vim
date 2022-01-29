@@ -26,3 +26,7 @@ Vim >= 8
 
 # Screencast
 [![asciicast](https://asciinema.org/a/465384.svg)](https://asciinema.org/a/465384)
+
+# License
+GPLv2
+Author: Hritik V (@MrHritik)
