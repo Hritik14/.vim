@@ -1,12 +1,6 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "bundle/vim-airline-themes"]
-	path = bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "bundle/vim-bufferline"]
 	path = bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline
@@ -37,12 +31,6 @@
 [submodule "pack/my_plugins/start/vim-fugitive"]
 	path = pack/my_plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "pack/my_plugins/start/vim-airline"]
-	path = pack/my_plugins/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "pack/my_plugins/start/vim-airline-themes"]
-	path = pack/my_plugins/start/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "pack/my_plugins/start/vim-bufferline"]
 	path = pack/my_plugins/start/vim-bufferline
 	url = https://github.com/bling/vim-bufferline
