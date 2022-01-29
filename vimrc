@@ -67,6 +67,8 @@ filetype plugin indent on
 :nnoremap <A-x> <C-x>
 :nnoremap <A-v> <C-v>
 :nnoremap <A-c> <C-c>
+set nrformats+=alpha
+
 " Some sort of pattern not found error in YCM
 set shortmess+=c
 
@@ -74,7 +76,8 @@ syntax enable
 " C'on, CPP files are also cpp files
 autocmd BufNewFile,BufReadPost *.CPP,*.cpp set filetype=cpp
 
-
+autocmd Filetype mail set spell
+autocmd Filetype gitcommit set spell
 
 " I REALLY don't need the Ex-Mode
 nnoremap Q <nop>
@@ -162,7 +165,7 @@ set shiftwidth=4
 " No dealy in InsertLeave
 set timeoutlen=1000 ttimeoutlen=0
 " Foldings
-nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
+" nnoremap <silent> <Tab> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 set foldcolumn=2
 set foldnestmax=2
@@ -171,10 +174,10 @@ set guifont=Source\ Code\ Pro\ 13
 let g:ale_enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
+let g:ale_echo_msg_format = '%linter%: %s'
+"let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
+"let g:ale_lint_on_insert_leave = 1
 let g:ale_fix_on_save = 0 "DIY
 let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
@@ -251,6 +254,7 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:SuperTabDefaultCompletionType = "context"         " Trying to make vim-go work
+let g:SuperTabContextDefaultCompletionType = "<c-n>" 	" Top-down autocomplete
 
 imap <C-m> <nop>
 let g:UltiSnipsExpandTrigger = "<C-h>"
@@ -310,7 +314,8 @@ autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
 colorscheme sorcerer
 hi Normal guibg=NONE
 hi Visual guibg=#2F2F2F guifg=NONE ctermbg=lightyellow
-set termguicolors
+" Search highlights color
+hi Search ctermfg=127 ctermbg=15
 
 " NEOVIM SPECIFIC CONFIG [No errors with vim, might not work with vim]
 " True terminal colors
