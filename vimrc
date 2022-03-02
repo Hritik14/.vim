@@ -48,6 +48,14 @@ let g:ycm_filetype_blacklist = {
 " Autocomplete on 3 letters in C, python
 let g:ycm_semantic_triggers = { 'c': [ 're!\w{3}' ], 'python': [ 're!\w{3}' ]}
 
+augroup MyYCMCustom
+  autocmd!
+  autocmd FileType c,cpp,python let b:ycm_hover = {
+    \ 'command': 'GetDoc',
+    \ 'syntax': &filetype
+    \ }
+augroup END
+
 "Ycm, time for error handling
 let g:ycm_auto_hover = 1
 let g:ycm_always_populate_location_list = 0 "Deprecated in favor of auto_hover
@@ -84,6 +92,8 @@ autocmd BufNewFile,BufReadPost *.CPP,*.cpp set filetype=cpp
 
 autocmd Filetype mail set spell
 autocmd Filetype gitcommit set spell
+autocmd Filetype python set textwidth=100
+autocmd Filetype rst set textwidth=100
 
 " I REALLY don't need the Ex-Mode
 nnoremap Q <nop>
@@ -112,6 +122,7 @@ map <C-LeftMouse> <LeftMouse>:YcmCompleter GoToDefinition<CR>
 nmap <Space> :YcmCompleter GoToDefinition<CR>
 map <C-RightMouse> <LeftMouse>:YcmCompleter GoToReferences<CR>
 nnoremap gb :ls<CR>:b<Space>
+nnoremap lb :b #<CR>
 
 " Configuring my splits, use C-w _ to maximize horizontally, C-| to max.
 " vertically
@@ -192,12 +203,12 @@ let g:ale_open_list = 0
 let g:ale_sign_highlight_linenrs = 1
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
-			\ 	'python': ['pylint']
+			\ 	'python' : ['pylint'],
 			\ 	}
 " 'python': ['flake8', 'pylint']
 let g:ale_fixers = {
-			\	'python': ['black', 'reorder-python-imports', 'autoimport'],
-			\	'c': ['trim_whitespace'],
+			\	'python' : ['black', 'reorder-python-imports', 'autoimport'],
+			\	'c'      : ['trim_whitespace'],
 			\ }
 " 'python': ['autopep8', 'yapf', 'remove_trailing_lines', 'trim_whitespace'],
 
